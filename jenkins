@@ -1,7 +1,7 @@
 pipeline {
     agent any
 environment {
-        DEPLOY_DIR = "/mnt/123/"
+        DEPLOY_DIR = "/home/ec2-user/hello"
     }
 stages {
         stage('Clone') {
