@@ -1,7 +1,7 @@
 pipeline {
     agent any
 environment {
-        DEPLOY_DIR = "/var/www/html/app"
+        DEPLOY_DIR = "/mnt/123/"
     }
 stages {
         stage('Clone') {
@@ -25,7 +25,7 @@ stage('Deploy') {
             steps {
                 echo 'Deploying application...'
                 sh """
-                sudo mkdir -p $DEPLOY_DIR
+                mkdir -p $DEPLOY_DIR
                 cp target/*.war $DEPLOY_DIR/
                 """
             }
