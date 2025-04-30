@@ -6,7 +6,7 @@ environment {
 stages {
         stage('Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/SheshuG/hello-world.git'
+                git branch: 'main', url: 'https://github.com/SheshuG/JavaWebCalculator.git'
             }
         }
 stage('Build') {
