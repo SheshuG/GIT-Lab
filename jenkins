@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+environment {
+        DEPLOY_DIR = "/var/www/html/app"
+    }
+stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/SheshuG/hello-world.git'
+            }
+        }
+stage('Build') {
+            steps {
+                echo 'Building the project...'
+                sh 'mvn clean package' // Adjust for your build tool
+            }
+        }
+stage('Test') {
+            steps {
+                echo 'Running unit tests...'
+                sh 'mvn test'
+            }
+        }
+stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+                sh """
+                mkdir -p $DEPLOY_DIR
+                cp target/*.war $DEPLOY_DIR/
+                """
+            }
+        }
+    }
+post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
