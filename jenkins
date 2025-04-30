@@ -1,7 +1,7 @@
 pipeline {
     agent any
 environment {
-        DEPLOY_DIR = "/home/ec2-user/hello"
+        DEPLOY_DIR = "${env.WORKSPACE}/hello"
     }
 stages {
         stage('Clone') {
@@ -25,8 +25,8 @@ stage('Deploy') {
             steps {
                 echo 'Deploying application...'
                 sh """
-                mkdir -p $DEPLOY_DIR
-                cp target/*.war $DEPLOY_DIR/
+                mkdir -p ${DEPLOY_DIR}
+                cp target/*.jar ${DEPLOY_DIR}/
                 """
             }
         }
