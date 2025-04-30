@@ -26,7 +26,7 @@ stage('Deploy') {
                 echo 'Deploying application...'
                 sh """
                 mkdir -p ${DEPLOY_DIR}
-                cp target/*.jar ${DEPLOY_DIR}/
+                cp target/*.war ${DEPLOY_DIR}/
                 """
             }
         }
