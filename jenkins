@@ -18,10 +18,7 @@ stage('Build') {
 stage('Test') {
             steps {
                 echo 'Running unit tests...'
-                sh 'mvn sonar:sonar \
-              -Dsonar.projectKey=-_:55 \
-              -Dsonar.host.url=http://10.0.2.15:9000 \
-              -Dsonar.login=b75e7b19399cdca4342a0730adc64044a96b316b'
+                sh 'mvn test'
             }
         }
 stage('Deploy') {
